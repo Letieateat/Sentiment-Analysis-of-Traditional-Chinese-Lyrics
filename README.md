@@ -1,11 +1,13 @@
-<h1 align="center">Welcome to Traditional-Chinese-English-Lyrics-and-songs-popularity 👋</h1>
+<h1 align="center">Welcome to Sentiment-Analysis-on-Traditional-Chinese-Lyrics 👋</h1>
 <p>
   <a href="https://opensource.org/license/mit" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
 
-> Our project examines Traditional Chinese lyrics, comparing them to English lyrics in terms of semantics and sentiment analysis. We also investigate the relationship between lyrics and a song's popularity.
+> The present study investigates the sentiment analysis of Traditional Chinese lyrics. We created a dataset containing 1,002 mandopop lyrics labeled with seven sentiments, conducting three sentiment analysis tasks in three models: BERT-based-Chinese model, CKIP BERT-based-Chinese model, and GPT 3.5. The prompt-based approach with a hand-crafted prompt was applied to the GPT model. According to the results, the CKIP model outperformed the other models on all sentiment analysis tasks. In addition, a bigger batch size may enhance the performance of models for binary tasks, but a smaller size could be better for delicate tasks.
+Furthermore, sadness and anxiety could be the two challenging sentiments for models regarding classification. Moreover, GPT-3.5 could potentially distinguish delicate sentiments better as it only failed on specific sentiments based on the confusion matrices. Applying different prompting methods may be a way to enhance the GPT model’s performance, which is worth future research.
+
 
 
 ## Project Dependencies
@@ -14,74 +16,50 @@ To run the code in this project, you'll need to install several Python libraries
 
 ### Installation Instructions
 
-- `Python 3.10.12` or higher (You'll need to set up a virtual environment to run Lyricsgenius in python 3.7)
-- `Jieba-tw`: Library for tokenization in Traditional Chinese.
-- `TCSP`: Library for Traditional Chinese text processing, providing stopwords list.
-- `Umap-learn`: Library for dimension reduction.
+- `Python 3.10.12` or higher
 - `Spotipy`: Library for interacting with the Spotify API.
-- `Lyricsgenius`: Library for fetching lyrics from the Genius website.  (You'll need to set up a virtual environment to run Lyricsgenius in python 3.7)
-- `SpaCy`: Library for NLP（tokenization) tasks.
-- `NLTK`: Library for getting stop words list in English.
-- `Sentence-transformers`: Library for computing dense vector representations of sentences or paragraphs.
-- `Kaleido`: Library for static image export from plotly figures.
+- `Pymusixmatch`: Library for interacting with the Musixmatch API.
+- `Ckip-transformers`: Library for tokenization in Traditional Chinese.
+- `TCSP`: Library for Traditional Chinese text processing, providing stopwords list.
+- `Pandas`: Library for data manipulation and analysis.
+- `Transformers`: Library for state-of-the-art NLP models.
+- `TensorFlow`: Library for deep learning models.
+- `Matplotlib`: Library for creating static, animated, and interactive visualizations.
+- `Seaborn`: Library for statistical data visualization.
+- `Scikit-learn`: Library for machine learning tasks.
+- `Torch`: Library for deep learning models.
+- `OpenAI`: Library for interacting with the OpenAI API.
+
 
 Once Python is installed, you can install the other dependencies using pip.
 
 ```bash
-!pip install git+https://github.com/APCLab/jieba-tw.git
-!pip install TCSP
-!pip install umap-learn
-!pip install spotipy --upgrade
-!pip install lyricsgenius
-!pip install spaCy
-python -m spacy download en_core_web_sm
-!pip install nltk
-!pip install sentence-transformers
-!pip install -U kaleido
+pip install spotipy
+pip install pymusixmatch
+pip install -U ckip-transformers
+pip install TCSP
+pip install pandas
+pip install transformers==4.31.0
+pip install tensorflow
+pip install matplotlib
+pip install seaborn
+pip install scikit-learn
+pip install torch
+pip install --upgrade openai
 ```
 
-## Setting Up a Virtual Environment with conda
+## Get your necessary API keys
 
-To manage dependencies and ensure compatibility, it's recommended to set up a virtual environment with Python 3.7 when using Lyricsgenius.
-For more information on managing environments with conda, refer to the "Managing environments" on conda: 
-https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment
+To use Spotipy and Musixmatch, you'll need to obtain your own API keys. Refer to the tutorials on Genius and Spotify for more information:
 
-## Get your necessary Genius and Spotify API keys
-
-To use Spotipy and LyricsGenius, you'll need to obtain your own Genius and Spotify API keys. 
-You may refer to the tutorials on Genius and Spotify for more information:
-- `Genius`: https://docs.genius.com/
-- `Spotify`: https://developer.spotify.com/documentation/web-api
-
-## References 
-
-Agatha, H., Putri, F., & Suryadibrata, A. (2024). Sentiment Analysis on Song Lyrics for Song Popularity Prediction Using BERT. Ultimatics : Jurnal Teknik Informatika, 15(2), 99-105. https://doi.org/10.31937/ti.v15i2.3420
-
-AndyChiangSH. (2021). kkbox_crawler. GitHub. https://github.com/AndyChiangSH/2021-IT-30days/blob/main/Projects/05_AJAX_KKBOX/kkbox_crawler.py
-
-APCLab. (2017). jieba-tw. GitHub.https://github.com/APCLab/jieba-tw
-
-Biancofiore, G. M., Di Noia, T., Di Sciascio, E., Narducci, F., & Pastore, P. (2022). Aspect based sentiment analysis in music: A case study with Spotify. In Proceedings of the 37th ACM/SIGAPP Symposium on Applied Computing (SAC '22) (pp. 696–703). Association for Computing Machinery. https://doi.org/10.1145/3477314.3507092
-
-Bryan Wu.  (2022). Traditional-Chinese-Stopwords-and-Punctuations-Library. GitHub.
-https://github.com/bryanchw/Traditional-Chinese-Stopwords-and-Punctuations-Library/tree/main
-
-Cozar, M. (2022, November 20). Predicting song popularity based on lyrics. LatinXinAI. https://medium.com/latinxinai/predicting-song-popularity-based-on-lyrics-fee599165be0
-
-Jain, P. (2021, May 24). Basics of CountVectorizer. Towards Data Science. https://towardsdatascience.com/basics-of-countvectorizer-e26677900f9c
-
-Luna, F. (2023, May 30). UMAP: An alternative dimensionality reduction technique. MCD-UNISON. https://medium.com/mcd-unison/umap-an-alternative-dimensionality-reduction-technique-7a5e77e80982
-
-Watts, C. (2021, December 17). Extracting Song Data From the Spotify API Using Python. Towards Data Science.
-https://towardsdatascience.com/extracting-song-data-from-the-spotify-api-using-python-b1e79388d50
-
+- `Musixmatch API`: https://developer.musixmatch.com/
+- `Spotify API`: https://developer.spotify.com/documentation/web-api
 
 ## Author
 
-👤 **Ling Yan Li and Stephen Buttner**
+👤 **Ling Yan Li**
 
 * Github: [@Leticiaeat](https://github.com/Leticiaeat)
-* Github: [@sbuttner](https://github.com/sbuttner)
   
 ## 📝 License
 
